@@ -164,6 +164,7 @@ public class JWTVotesEndpoint extends AssignmentEndpoint {
     return value;
   }
 
+
   @PostMapping(value = "/JWT/votings/{title}")
   @ResponseBody
   @ResponseStatus(HttpStatus.ACCEPTED)
