@@ -26,10 +26,7 @@ import static java.util.Comparator.comparingLong;
 import static java.util.Optional.ofNullable;
 import static java.util.stream.Collectors.toList;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.impl.TextCodec;
 import java.time.Duration;
 import java.time.Instant;
@@ -153,7 +150,7 @@ public class JWTVotesEndpoint extends AssignmentEndpoint {
     } else {
       try {
           Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_PASSWORD).parseClaimsJws(accessToken);
-        Claims claims = (Claims) jwt.getBody();
+        Claims claims = (Claims) jws.getBody();
         String user = (String) claims.get("user");
         if ("Guest".equals(user) || !validUsers.contains(user)) {
           value.setSerializationView(Views.GuestView.class);
