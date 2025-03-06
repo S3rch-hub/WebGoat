@@ -60,7 +60,6 @@ public class JWTRefreshEndpoint extends AssignmentEndpoint {
 
   public static final String PASSWORD = "bm5nhSkxCXZkKRy4";
   private static final String JWT_PASSWORD = System.getenv("JWT_SECRET")
-
   private static final List<String> validRefreshTokens = new ArrayList<>();
 
   @PostMapping(
