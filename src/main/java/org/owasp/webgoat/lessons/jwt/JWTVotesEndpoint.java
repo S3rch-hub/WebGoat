@@ -150,7 +150,7 @@ public class JWTVotesEndpoint extends AssignmentEndpoint {
     } else {
       try {
           Jws<Claims> jws = Jwts.parser().setSigningKey(JWT_PASSWORD).parseClaimsJws(accessToken);
-        Claims claims = (Claims) jws.getBody();
+        Claims claims = jws.getBody();
         String user = (String) claims.get("user");
         if ("Guest".equals(user) || !validUsers.contains(user)) {
           value.setSerializationView(Views.GuestView.class);
